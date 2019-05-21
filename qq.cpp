@@ -84,12 +84,17 @@ void guangdu(MGraph G,int v){
 void shendu2(MGraph G,int v){
 	LINKSTACK S;
 	S=NULL;
+		//定义并初始化空栈
+
 	int t=0;
+		//记录是否找到未被访问过的邻接点
+
 	printf("%3c",G.vexs[v+1]);
 	vist[v+1]=1;
-	PUSH(S,v);
+	PUSH(S,v);//打印 记录 入栈
+
 	while(S){
-		v=S->x;
+		v=S->x;t=0;
 		for(int w=0;w<G.vexnum;++w){
 			if(G.arcs[v][w]&&vist[w+1]==0){
 				printf("%3c",G.vexs[w+1]);
@@ -98,10 +103,11 @@ void shendu2(MGraph G,int v){
 				t++;
 				break;
 			}
+		}
 			
-		if(t==0)POP(S);
+		if(t==0){POP(S);}
+	
 	}
-}
 }
 int main(void){
 	MGraph G;
